@@ -14,142 +14,88 @@ mainTL
 //.from("#Planet-1", {duration: 0.3, transformOrigin: '50% 50%', scale: 0, ease: "elastic.out(1)", y: -600})
 
 //.from("#Rectangle-right", {duration: 2, drawSVG:"0% 100%"})
-function loadingIn(){
-    let tl = gsap.timeline({repeat:-1});
 
-    tl
-    .from("#Loading-1", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"})
-    .from("#Loading-2", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    .from("#Loading-3", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    
-    .to("#Loading-1", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"})
-    .to("#Loading-2", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    .to("#Loading-3", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    ;
-
-    return tl;
-}
-
-function loadingScale(){
+function BlueCircleMove(){
     let tl = gsap.timeline();
 
     tl
-    .from("#LoadingText", {duration: 1, scale: 0, transformOrigin: '50% 50%', opacity: 0, y: 200, ease: "back.out"})
+    .from("#CircleBlue", {duration: 4, x: -100, y: -100, ease: "power2.inOut"})
     ;
 
     return tl;
+
 }
 
-function planetScale(){
+function CircleBlur(){
     let tl = gsap.timeline();
 
     tl
-    .from("#Sun", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"})
-    .from("#SunOrbit", {duration: 0.5, opacity: 0, ease: "back.out"}, "<50%")
-    .from("#SunOrbitTwo", {duration: 0.5, opacity: 0, ease: "back.out"}, "<50%")
-    .from("#SunOrbitThree", {duration: 0.5, opacity: 0, ease: "back.out"}, "<50%")
-    .from("#Planet", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    .from("#PlanetTwo", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    .from("#PlanetThree", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    .from("#Orbit", {duration: 0.5, opacity: 0, ease: "back.out"}, "<50%")
-    .from("#Moon", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    .from("#OrbitTwo", {duration: 0.5, opacity: 0, ease: "back.out"}, "<50%")
-    .from("#OrbitTwoTwo", {duration: 0.5, opacity: 0, ease: "back.out"}, "<50%")
-    .from("#MoonTwo", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    .from("#MoonTwoTwo", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    .from("#OrbitThree", {duration: 0.5, opacity: 0, ease: "back.out"}, "<50%")
-    .from("#OrbitThreeThree", {duration: 0.5, opacity: 0, ease: "back.out"}, "<50%")
-    .from("#MoonThree", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    .from("#MoonThreeThree", {duration: 0.75, scale: 0, transformOrigin: '50% 50%', opacity: 0, ease: "back.out"}, "<50%")
-    ;
-
-    return tl;
-}
-
-function moonOrbit(){
-    let tl = gsap.timeline({repeat:-1});
-
-    tl
-    .to("#Moon", {duration: 2, ease:"none", motionPath:{path:"#Orbit", align: "#Orbit", start: 0, end:1, alignOrigin:[0.5, 0.5]}}, "begin")
-    
+    .from("#CircleBlur", {duration: 3, opacity: 0})
+    .to("#CircleBlur", {duration: 0.5, scale: 1.02, transformOrigin: '100% 100%', ease: "power2.inOut"})
+    .to("#CircleBlur", {duration: 0.5, scale: 1, transformOrigin: '100% 100%', ease: "power2.inOut"}, "go")
+    .to("#CircleBlur", {duration: 1.5, opacity: 0}, "go")
     ;
 
     return tl;
 
 }
 
-function moonOrbitTwo(){
-    let tl = gsap.timeline({repeat:-1});
+function drawCircles(){
+    let tl = gsap.timeline();
 
     tl
-    .to("#MoonTwo", {duration: 2, ease:"none", motionPath:{path:"#OrbitTwo", align: "#OrbitTwo", start: 0, end:1, alignOrigin:[0.5, 0.5]}}, "begin")
+    .fromTo("#CircleOneBottom", {drawSVG:"100% 100%"}, {duration: 0.5, drawSVG: "0% 100%", ease:"none"})
+    .fromTo("#CircleTwoTop", {drawSVG:"100% 100%"}, {duration: 0.25, drawSVG: "0% 100%", ease:"none"})
+    .fromTo("#CircleThreeBottom", {drawSVG:"100% 100%"}, {duration: 0.375, drawSVG: "0% 100%", ease:"none"})
+    .from("#CircleThreeTop", {duration: 0.375, drawSVG: 0, ease:"none"})
+    .from("#CircleTwoBottom", {duration: 0.25, drawSVG: 0, ease:"none"})
+    .from("#CircleOneTop", {duration: 0.5, drawSVG: 0, ease:"none"})
     ;
 
     return tl;
 
 }
 
-function moonOrbitTwoTwo(){
-    let tl = gsap.timeline({repeat:-1});
+function circleOpacity(){
+    let tl = gsap.timeline();
 
     tl
-    .to("#MoonTwoTwo", {duration: 3, ease:"none", motionPath:{path:"#OrbitTwoTwo", align: "#OrbitTwoTwo", start: 0, end:1, alignOrigin:[0.5, 0.5]}}, "begin")
+    .from("#CircleOne", {duration: 0.001, opacity: 0}, "go")
+    .from("#CircleTwoFull", {duration: 0.001, opacity: 0}, "go")
+    .from("#CircleThreeFull", {duration: 0.001, opacity: 0}, "go")
+
+    .to("#CircleOneTop", {duration: 0.001, opacity: 0}, "now")
+    .to("#CircleTwoTop", {duration: 0.001, opacity: 0}, "now")
+    .to("#CircleThreeTop", {duration: 0.001, opacity: 0}, "now")
+    .to("#CircleOneBottom", {duration: 0.001, opacity: 0}, "now")
+    .to("#CircleTwoBottom", {duration: 0.001, opacity: 0}, "now")
+    .to("#CircleThreeBottom", {duration: 0.001, opacity: 0}, "now")
+    .to("#CircleBlue", {duration: 0.001, opacity: 0}, "now")
+    .to("#CircleWhiteFill", {duration: 0.001, opacity: 0}, "now")
     ;
 
     return tl;
 
 }
 
-function moonOrbitThree(){
-    let tl = gsap.timeline({repeat:-1});
+function circleMove(){
+    let tl = gsap.timeline();
 
     tl
-    .to("#MoonThree", {duration: 3, ease:"none", motionPath:{path:"#OrbitThree", align: "#OrbitThree", start: 0, end:1, alignOrigin:[0.5, 0.5]}}, "begin")
+    .to("#CircleOne", {duration: 1, x: -23, ease:"power2.inOut"}, "go")
+    .to("#CircleThreeFull", {duration: 1, x: 23, ease:"power2.inOut"}, "go")
     ;
 
     return tl;
 
 }
 
-function moonOrbitThreeThree(){
-    let tl = gsap.timeline({repeat:-1});
+function lineStretch(){
+    let tl = gsap.timeline();
 
     tl
-    .to("#MoonThreeThree", {duration: 4, ease:"none", motionPath:{path:"#OrbitThreeThree", align: "#OrbitThreeThree", start: 0, end:1, alignOrigin:[0.5, 0.5]}}, "begin")
-    ;
-
-    return tl;
-
-}
-
-function sunOrbit(){
-    let tl = gsap.timeline({repeat:-1});
-
-    tl
-    //.to("SunOrbit", {duration: 4, drawSVG:"0% 100%"})
-    .to("#FullPlanet", {duration: 4, ease:"none", motionPath:{path:"#SunOrbit", align: "#SunOrbit", start: 0, end:1, alignOrigin:[0.5, 0.5]}}, "begin")
-    ;
-
-    return tl;
-
-}
-
-function sunOrbitTwo(){
-    let tl = gsap.timeline({repeat:-1});
-
-    tl
-    .to("#FullPlanetTwo", {duration: 7, ease:"none", motionPath:{path:"#SunOrbitTwo", align: "#SunOrbitTwo", start: 0, end:1, alignOrigin:[0.5, 0.5]}}, "begin")
-    ;
-
-    return tl;
-
-}
-
-function sunOrbitThree(){
-    let tl = gsap.timeline({repeat:-1});
-
-    tl
-    .to("#FullPlanetThree", {duration: 9, ease:"none", motionPath:{path:"#SunOrbitThree", align: "#SunOrbitThree", start: 0, end:1, alignOrigin:[0.5, 0.5]}}, "begin")
+        //.from("#MiddleLine", {duration: 1, drawSVG: 0, ease:"power2.out"})
+        .from("#MiddleLine", {duration: 1, scaleX: 0, transformOrigin: "50% 50%"})
     ;
 
     return tl;
@@ -157,16 +103,12 @@ function sunOrbitThree(){
 }
 
 mainTL
-.add(loadingScale(), "go")
-.add(planetScale(), "go")
-.add(loadingIn(), "go")
-.add(moonOrbit(), "go")
-.add(moonOrbitTwo(), "go")
-.add(moonOrbitTwoTwo(), "go")
-.add(moonOrbitThree(), "go")
-.add(moonOrbitThreeThree(), "go")
-.add(sunOrbit(), "go")
-.add(sunOrbitTwo(), "go")
-.add(sunOrbitThree(), "go")
+.add(BlueCircleMove(), "go")
+.add(CircleBlur(), "go")
+.add(drawCircles())
+.add(circleOpacity())
+.add(lineStretch(), "ok")
+.add(circleMove(), "ok")
+
 
 
