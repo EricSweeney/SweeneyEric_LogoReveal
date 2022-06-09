@@ -19,7 +19,7 @@ function BlueCircleMove(){
     let tl = gsap.timeline();
 
     tl
-    .from("#CircleBlue", {duration: 4, x: -100, y: -100, ease: "power2.inOut"})
+    .from("#CircleBlue", {duration: 5, x: -100, y: -100, ease: "power2.inOut"})
     ;
 
     return tl;
@@ -30,7 +30,7 @@ function CircleBlur(){
     let tl = gsap.timeline();
 
     tl
-    .from("#CircleBlur", {duration: 3, opacity: 0})
+    .from("#CircleBlur", {duration: 4, opacity: 0})
     .to("#CircleBlur", {duration: 0.5, scale: 1.02, transformOrigin: '100% 100%', ease: "power2.inOut"})
     .to("#CircleBlur", {duration: 0.5, scale: 1, transformOrigin: '100% 100%', ease: "power2.inOut"}, "go")
     .to("#CircleBlur", {duration: 1.5, opacity: 0}, "go")
@@ -102,13 +102,96 @@ function lineStretch(){
 
 }
 
+function lineAppear(){
+    let tl = gsap.timeline();
+
+    tl
+        //.from("#MiddleLine", {duration: 1, drawSVG: 0, ease:"power2.out"})
+        .from("#Line1", {duration: 0.3, opacity: 0})
+        .from("#Line2", {duration: 0.3, opacity: 0}, "<50%")
+        .from("#Line3", {duration: 0.3, opacity: 0}, "<50%")
+        .from("#Line4", {duration: 0.3, opacity: 0}, "<50%")
+        .from("#Line5", {duration: 0.3, opacity: 0}, "<50%")
+        .from("#Line6", {duration: 0.3, opacity: 0}, "<50%")
+        .from("#Line7", {duration: 0.3, opacity: 0}, "<50%")
+        .from("#Line8", {duration: 0.3, opacity: 0}, "<50%")
+        .from("#Line9", {duration: 0.3, opacity: 0}, "<50%")
+    ;
+
+    return tl;
+
+}
+
+function wordAppear(){
+    let tl = gsap.timeline();
+
+    tl
+        //.from("#MiddleLine", {duration: 1, drawSVG: 0, ease:"power2.out"})
+        .to("#Line1", {duration: 0.2, opacity: 0})
+        .to("#Line1", {duration: 0.2, opacity: 1})
+        .to("#Line1", {duration: 0.2, opacity: 0})
+        .to("#Line1", {duration: 0.2, opacity: 1})
+        .from("#N", {duration: 0.01, opacity: 0})
+        .to("#Line1", {duration: 0.2, opacity: 0})
+
+        .to("#Line2", {duration: 0.2, opacity: 0})
+        .to("#Line2", {duration: 0.2, opacity: 1})
+        .from("#O", {duration: 0.01, opacity: 0})
+        .to("#Line2", {duration: 0.2, opacity: 0})
+
+        .to("#Line3", {duration: 0.2, opacity: 0})
+        .to("#Line3", {duration: 0.2, opacity: 1})
+        .from("#R", {duration: 0.01, opacity: 0})
+        .to("#Line3", {duration: 0.2, opacity: 0})
+
+        .to("#Line4", {duration: 0.2, opacity: 0})
+        .to("#Line4", {duration: 0.2, opacity: 1})
+        .from("#T", {duration: 0.01, opacity: 0})
+        .to("#Line4", {duration: 0.2, opacity: 0})
+
+        .to("#Line5", {duration: 0.2, opacity: 0})
+        .to("#Line5", {duration: 0.2, opacity: 1})
+        .from("#H", {duration: 0.01, opacity: 0})
+        .to("#Line5", {duration: 0.2, opacity: 0})
+
+        .to("#Line6", {duration: 0.2, opacity: 0})
+        .to("#Line6", {duration: 0.2, opacity: 1})
+        .from("#L", {duration: 0.01, opacity: 0})
+        .to("#Line6", {duration: 0.2, opacity: 0})
+
+        .to("#Line7", {duration: 0.2, opacity: 0})
+        .to("#Line7", {duration: 0.2, opacity: 1})
+        .from("#A", {duration: 0.01, opacity: 0})
+        .to("#Line7", {duration: 0.2, opacity: 0})
+
+        .to("#Line8", {duration: 0.2, opacity: 0})
+        .to("#Line8", {duration: 0.2, opacity: 1})
+        .from("#N2", {duration: 0.01, opacity: 0})
+        .to("#Line8", {duration: 0.2, opacity: 0})
+
+        .to("#Line9", {duration: 0.2, opacity: 0})
+        .to("#Line9", {duration: 0.2, opacity: 1})
+        .from("#E", {duration: 0.01, opacity: 0})
+        .to("#Line9", {duration: 0.2, opacity: 0})
+    ;
+
+    return tl;
+
+}
+
 mainTL
+.from("#CircleWhiteFill", {duration: 2, scale: 0, transformOrigin: "50% 50%", opacity: 0, ease:"power2.out"})
 .add(BlueCircleMove(), "go")
 .add(CircleBlur(), "go")
+.from("#logo", {duration: 2, transformOrigin: "50% 50%", x: 50, ease:"power2.inOut"})
 .add(drawCircles())
 .add(circleOpacity())
 .add(lineStretch(), "ok")
 .add(circleMove(), "ok")
+.to("#logo", {duration: 1, scale: 0.8, y: -50, transformOrigin: "50% 50%", ease:"power2.inOut"})
+.add(lineAppear())
+.add(wordAppear())
+.to("#name", {duration: 1, scale: 0.8, transformOrigin: "50% 50%", ease:"power2.inOut"})
 
 
 
